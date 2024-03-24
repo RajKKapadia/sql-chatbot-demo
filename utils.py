@@ -48,8 +48,7 @@ def get_table_names() -> list[str]:
     cursor.execute(
         f"SELECT table_name FROM information_schema.tables WHERE table_schema = '{config.MYSQL_DB_NAME}';")
     for table in cursor:
-        if table[0] in config.MYSQL_TABLES:
-            table_names.append(table[0])
+        table_names.append(table[0])
     cursor.close()
     close_mysql_pooled_cnx(cnx)
     return table_names
